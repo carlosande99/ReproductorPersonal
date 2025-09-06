@@ -1,0 +1,19 @@
+import yt_dlp
+import os
+def descargar_musica(url, carpeta="mi_musica"):
+    try:
+        if not os.path.exists(carpeta):
+            os.makedirs(carpeta)
+        opciones = {
+            'format' : 'bestaudio/best',
+            'outtmpl' : f'{carpeta}/%(tittle)s.%(ext)s'
+        }
+        print("Descargando")
+        with yt_dlp.YoutubeDL(opciones) as ydl:
+            ydl.download([url])
+            print("Descaga completada")
+    except Exception as e:
+        print(f"error : {e}")
+if __name__=="__main__":
+    url = input("ingrese su enlace")
+    descargar_musica(url)
