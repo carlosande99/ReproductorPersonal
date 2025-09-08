@@ -126,6 +126,21 @@ main section .article-main{
     var(--color-gradient-end)
   );
   height: 40%;
+  display: flex;
+  align-items: center;
+}
+
+main section .img-song{
+  width: 200px;
+  height: 200px;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+main section .info-song{
+  display: flex;
+  flex-direction: column;
+  text-align: start;
 }
 
 main section .article-secondary{
