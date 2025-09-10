@@ -41,7 +41,41 @@
     </aside>
   </main>
   <footer>
-    <h2>Footer</h2>
+    <div>
+      titulo de la cancion /artista/imagen de la cancion
+    </div>
+
+    <div>
+      <div class="controls">
+        <div class="main-controls">
+          <button id="suffle">
+            <img src="../svg/suffle.svg" alt="suffle">
+          </button>
+          <button id="prev">
+            <img src="../svg/prev.svg" alt="">
+          </button>
+          <button id="play" class="big">
+            <img src="../svg/play-svgrepo-com.svg" alt="">
+          </button>
+          <button id="next">
+            <img src="../svg/next-svgrepo-com.svg" alt="">
+          </button>
+          <button id="repeat">
+            <img src="../svg/repeat-svgrepo-com.svg" alt="">
+          </button>
+        </div>
+        <div class="time-controls">
+          <span id="curTime">0:00</span>
+          <progress id="progress" value="0" max="100">0%</progress>
+          <span id="durTime">0:00</span>
+        </div>
+      </div>
+      <audio id="audio" preload="metadata"></audio>
+    </div>
+
+    <div>
+      cola/letra/volumen/minireproductor
+    </div>
   </footer>
   <script src="../js/index.js"></script>
 </body>

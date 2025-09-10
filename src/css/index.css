@@ -14,28 +14,9 @@ body {
   max-height: 100vh;
   display: flex;
   flex-wrap: wrap;
-}
-
-.player {
-  background-color: #1e1e1e;
   text-align: center;
-
 }
 
-.controls button {
-  background-color: #1db954;
-  border: none;
-  color: white;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 18px;
-}
-
-.controls button:hover {
-  background-color: #1ed760;
-}
-
-/* ----------- */
 header {
   background-color: var(--color-primary);
   height: 7vh;
@@ -128,6 +109,7 @@ main section .article-main{
   height: 40%;
   display: flex;
   align-items: center;
+  border-bottom: 0.5px solid gray; 
 }
 
 main section .img-song{
@@ -162,5 +144,59 @@ footer{
   width: 100%;
   background-color: var(--color-primary);
   height: 10vh;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
 }
 
+footer div .controls .main-controls button img{
+  width: 20px;
+  height: 20px;
+}
+
+footer div{
+  width: 33.33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer div .controls{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.main-controls{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+}
+.main-controls button{
+  display: flex;
+  align-items: center;
+  width: 30px !important;
+  height: 30px !important;
+  justify-content: center;
+}
+
+.main-controls button img{
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.time-controls{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.time-controls progress{
+  width: 90%;
+}
