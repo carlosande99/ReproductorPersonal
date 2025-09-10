@@ -24,15 +24,15 @@ export async function obtenerCancion(trackId) {
     let newId = 1;
     if (fs.existsSync(jsonPath)) {
       const file = fs.readFileSync(jsonPath, 'utf-8');
-      datos = JSON.parse(file);
+      datos = file ? JSON.parse(file): [];
     }
     if(datos.length > 0){
       newId = datos[datos.length - 1].id + 1;
     }
     const song = {
       id: newId,
+      idCancion: track.body.id,
       datos: {
-        id: track.body.id,
         title: track.body.name,
         artist: track.body.artists.map(a => a.name).join(', '),
         album: track.body.album.name,

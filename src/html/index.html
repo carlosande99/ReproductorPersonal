@@ -12,8 +12,9 @@
     </button>
     <div class="search-container">
       <img src="../svg/search-alt-svgrepo-com.svg" alt="search-alt-svgrepo-com" class="icon-search">
-      <form action="">
-        <input placeholder="Añadir canción a la lista" type="text" class="input-add-song">
+      <form action="/" method="post">
+        <input placeholder="Añadir canción a la lista" type="text" class="input-add-song" name="url" id="url" required>
+        <input type="submit" value="Añadir" style="display: none;">
       </form>
     </div>
 

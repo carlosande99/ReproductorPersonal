@@ -10,6 +10,7 @@ async function main(trackId) {
 export const añadirCancion = async (req, res) => {
   try {
     const { url } = req.body;
+    console.log("URL recibida:", url);
     if (!url) {
       return res.status(400).send("Falta la URL de la canción");
     }
