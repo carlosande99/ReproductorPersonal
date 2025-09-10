@@ -1,4 +1,4 @@
-import { spotifyApi } from './autentificacion.js';
+import { spotifyApi } from '../services/autentificacion.js';
 import { descargarCancion } from './descargarAudio.js';
 
 import path from 'path';
@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 import fs from 'fs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const jsonPath = path.join(__dirname, 'src','datos.json');
+const jsonPath = path.join(__dirname, '..','src','datos.json');
 
 
 // Función para buscar una canción por ID

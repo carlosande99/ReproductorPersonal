@@ -1,6 +1,5 @@
-import {authenticate} from './services/autentificacion.js';
-import {obtenerCancion} from './cancionId.js';
-import {extraerIdDeUrl} from './cancionId.js';
+import {authenticate} from '../services/autentificacion.js';
+import {obtenerCancion, extraerIdDeUrl} from '../controllers/cancionId.js';
 
 
 async function main(trackId) {
