@@ -46,6 +46,7 @@ header .search-container{
   width: 30%;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 header .search-container .icon-search{
@@ -75,11 +76,44 @@ header .search-container form .input-add-song{
   border: none;
   color: white;
   padding-left: 60px;
+  box-sizing: border-box;
+  padding-right: 50px;
 }
 .input-add-song::placeholder{
   color: rgb(209, 195, 195);
   opacity: 1;
   font-size: medium;
+}
+
+.input-add-song:focus{
+  background-color: inherit;
+}
+
+.input-add-song:-webkit-autofill{
+  background: none !important;
+  box-shadow: inset 0 0 0px 1000px var(--color-secondary) !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.search-container .btn-close{
+  z-index: 1;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  cursor: pointer;
+  /* display: none; */
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 10px;
+}
+
+.search-container .btn-close .icon-close{
+  width: 35px;
+  height: 35px;
 }
 main{
   width: 100%;
