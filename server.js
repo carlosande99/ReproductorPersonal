@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { añadirCancion } from './routes/rutas.js';
+import fs from 'fs';
 const app = express();
 const PORT = 8888;
 
@@ -17,6 +18,11 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', añadirCancion);
+
+app.get('/songs', (req, res) => {
+  const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'src','datos.json'), 'utf8'))
+  res.json(data)
+});
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);

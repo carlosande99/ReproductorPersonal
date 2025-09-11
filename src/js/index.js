@@ -4,9 +4,7 @@ const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 const songName = document.getElementById('song-name');
 const form = document.getElementById('form');
-const songs = [
-  
-];
+const list = document.getElementById('playlist');
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -21,3 +19,15 @@ form.addEventListener('submit', async (e) => {
         console.error("Error en la petición:", err);
     }
 });
+
+fetch("/songs")
+    .then(response => response.json())
+    .then(serverData => {
+        console.log("Datos recibidos del servidor:", serverData);
+        serverData.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item.datos.artist;
+            list.appendChild(li);
+        })
+    })
+    .catch(err => console.error("Error al obtener las canciones:", err));

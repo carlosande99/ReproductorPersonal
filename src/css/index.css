@@ -216,11 +216,44 @@ footer div .controls{
   width: 30px !important;
   height: 30px !important;
   justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.main-controls .big{
+  border-radius: 100%;
+  background-color: white;
+  width: 35px !important;
+  height: 35px !important;
+}
+
+.main-controls button img:hover{
+  filter: invert(0.9);
+}
+
+.main-controls .big img:hover{
+  filter: invert(0);
+}
+
+.main-controls .big:hover{
+  background-color: rgb(219, 212, 212);
 }
 
 .main-controls button img{
+  filter: invert(0.7);
+  width: 20px;
+  height: 20px;
+}
+
+.main-controls .big img{
+  filter: invert(0);
   width: 20px !important;
   height: 20px !important;
+}
+
+.main-controls .big .icon-pause{
+  display: none;
 }
 
 .time-controls{
