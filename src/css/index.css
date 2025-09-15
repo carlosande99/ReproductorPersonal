@@ -143,7 +143,6 @@ main section .article-main{
   height: 40%;
   display: flex;
   align-items: center;
-  border-bottom: 0.5px solid gray; 
 }
 
 main section .img-song{
@@ -167,6 +166,54 @@ main section .article-secondary{
     var(--color-secondary)
   );
   height: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+table{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+table tbody{
+  width: 100%;
+  overflow-y: auto;
+  height: 100%;
+}
+
+table tbody tr > th{
+  border-bottom: 0.5px solid gray;
+}
+
+table tbody tr:hover > td{
+  background-color: var(--color-primary);
+  cursor: pointer;
+}
+
+table tbody td>div, table tbody td>img{
+  float: left;
+}
+
+table tbody td {
+  height: 45px;
+}
+
+table tbody td:not(:first-child), table tbody th:not(:first-child){
+  text-align: left;
+}
+
+table tbody td img{
+  width: 9%;
+  height: 100%;
+}
+
+table tbody td div{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  height: 100%;
 }
 
 main aside{
