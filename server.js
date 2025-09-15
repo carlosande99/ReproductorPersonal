@@ -24,6 +24,8 @@ app.get('/songs', (req, res) => {
   res.json(data)
 });
 
+app.use("/musica", express.static(path.join(__dirname, 'src','music')));
+
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

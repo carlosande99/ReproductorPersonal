@@ -5,7 +5,9 @@ const nextBtn = document.getElementById('next');
 const songName = document.getElementById('song-name');
 const form = document.getElementById('form');
 const list = document.getElementById('songList');
-
+const progress = document.getElementById('progress');
+const curTime = document.getElementById('curTime');
+const durTime = document.getElementById('durTime');
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const url = document.getElementById('url').value;
@@ -53,7 +55,12 @@ fetch("/songs")
             td2.appendChild(div);
 
             tr.onclick = () => {
-                console.log("Reproduciendo:", item.datos.title);
+                const songDuration = calcularDuracion(item.datos.duracion);
+                durTime.textContent = songDuration;
+
+                let audio = document.getElementById('audio');
+                audio.src = `/musica/${item.idCancion}.mp3`;
+                audio.play();
             };
 
             tr.appendChild(td1);
@@ -80,3 +87,18 @@ function calcularDuracion(duracion) {
 
   return `${minStr}:${secStr}`;
 }
+
+audio.addEventListener('timeupdate', () => {
+    if (!audio.duration) return;
+    progress.value = (audio.currentTime / audio.duration) * 100;
+    curTime.textContent = calcularDuracion(audio.currentTime * 1000);
+
+});
+
+progress.addEventListener("click", (e) => {
+    const rect = progress.getBoundingClientRect();
+    const offsetX = e.clientX - rect.left;
+    const totalWidth = rect.width;
+    const porcentaje = offsetX / totalWidth;
+    audio.currentTime = porcentaje * audio.duration;
+});
