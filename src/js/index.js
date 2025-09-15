@@ -8,6 +8,11 @@ const list = document.getElementById('songList');
 const progress = document.getElementById('progress');
 const curTime = document.getElementById('curTime');
 const durTime = document.getElementById('durTime');
+const play = document.getElementById('play');
+const iconPlay = document.getElementById("icon-play");
+const iconPause = document.getElementById("icon-pause");
+
+
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const url = document.getElementById('url').value;
@@ -60,6 +65,8 @@ fetch("/songs")
 
                 let audio = document.getElementById('audio');
                 audio.src = `/musica/${item.idCancion}.mp3`;
+                iconPlay.style.display = "none";
+                iconPause.style.display = "inline";
                 audio.play();
             };
 
@@ -101,4 +108,16 @@ progress.addEventListener("click", (e) => {
     const totalWidth = rect.width;
     const porcentaje = offsetX / totalWidth;
     audio.currentTime = porcentaje * audio.duration;
+});
+
+play.addEventListener("click", (e) => {
+    if(audio.paused){
+        audio.play();
+        iconPlay.style.display = "none";
+        iconPause.style.display = "inline";
+    }else{
+        audio.pause();
+        iconPlay.style.display = "inline";
+        iconPause.style.display = "none";
+    }
 });
