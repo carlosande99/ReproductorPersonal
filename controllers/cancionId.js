@@ -4,6 +4,7 @@ import { descargarCancion } from './descargarAudio.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
+import {duration_ms} from './descargarAudio.js'
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const jsonPath = path.join(__dirname, '..','src','datos.json');
@@ -17,7 +18,6 @@ export async function obtenerCancion(trackId) {
     console.log('Artista:', track.body.artists.map(a => a.name).join(', '));
     console.log('Álbum:', track.body.album.name);
     console.log('Carátula:', track.body.album.images[0].url);
-    console.log('Duración (ms):', track.body.duration_ms);
     console.log('id:', track.body.id);
 
     let datos = [];
@@ -37,15 +37,14 @@ export async function obtenerCancion(trackId) {
         artist: track.body.artists.map(a => a.name).join(', '),
         album: track.body.album.name,
         caractula: track.body.album.images[0].url,
-        duracion: track.body.duration_ms
+        duracion: 0
       }
     };
-
+    await descargarCancion(track.body.name, track.body.artists[0].name, track.body.id);
+    song.datos.duracion = duration_ms;
     // Agregar la nueva canción
     datos.push(song);
     fs.writeFileSync(jsonPath, JSON.stringify(datos, null, 2), 'utf-8');
-
-    await descargarCancion(track.body.name, track.body.artists[0].name, track.body.id);
   } catch (err) {
     console.error('Error al obtener canción:', err);
   }

@@ -4,6 +4,7 @@ import ytdl from '@distube/ytdl-core';
 
 // Crear carpeta 'descargas' si no existe
 const carpetaDescargas = './src/music';
+export let duration_ms = 0;
 if (!fs.existsSync(carpetaDescargas)) fs.mkdirSync(carpetaDescargas);
 
 async function buscarCancionEnYoutube(titulo, artista) {
@@ -49,6 +50,9 @@ export async function descargarCancion(titulo, artista, id) {
   try {
     console.log(`Buscando "${titulo}" de ${artista} en YouTube...`);
     const url = await buscarCancionEnYoutube(titulo, artista);
+    
+    duration_ms = await obtenerDuracion(url);
+    console.log(`Duración en ms: ${duration_ms}`);
 
     const nombreArchivo = `${carpetaDescargas}/${id}.mp3`;
     console.log('Descargando audio...');
@@ -59,6 +63,14 @@ export async function descargarCancion(titulo, artista, id) {
   }
 }
 
-async function quitarCaracteresInvalidos(nombre) {
-  return nombre.replace(/[\/\\?%*:|"<>]/g, '-');
+async function obtenerDuracion(url){
+  try{
+    const info = await ytdl.getInfo(url);
+    const duracionSeg = parseInt(info.videoDetails.lengthSeconds); // duración en segundos
+    const duracionMs = duracionSeg * 1000; // duración en milisegundos
+    console.log(`Duración: ${duracionSeg} s / ${duracionMs} ms`);
+    return duracionMs;
+  }catch(err){
+    console.error('Error al obtener la duración:', err);
+  }
 }
