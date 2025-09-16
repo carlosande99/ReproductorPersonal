@@ -11,7 +11,7 @@ const durTime = document.getElementById('durTime');
 const play = document.getElementById('play');
 const iconPlay = document.getElementById("icon-play");
 const iconPause = document.getElementById("icon-pause");
-
+const datosReproductor = document.getElementById("datosReproductor")
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -60,6 +60,7 @@ fetch("/songs")
             td2.appendChild(div);
 
             tr.onclick = () => {
+                const div2 = document.createElement('div');
                 const songDuration = calcularDuracion(item.datos.duracion);
                 durTime.textContent = songDuration;
 
@@ -67,6 +68,11 @@ fetch("/songs")
                 audio.src = `/musica/${item.idCancion}.mp3`;
                 iconPlay.style.display = "none";
                 iconPause.style.display = "inline";
+                datosReproductor.replaceChildren();
+                div2.appendChild(title.cloneNode(true));
+                div2.appendChild(artist.cloneNode(true));
+                datosReproductor.appendChild(img.cloneNode(true));
+                datosReproductor.appendChild(div2);
                 audio.play();
             };
 
@@ -110,14 +116,24 @@ progress.addEventListener("click", (e) => {
     audio.currentTime = porcentaje * audio.duration;
 });
 
-play.addEventListener("click", (e) => {
-    if(audio.paused){
+play.addEventListener("click", togglePlayPause);
+
+document.addEventListener("keydown", (e) => {
+    // Verifica si la tecla es espacio y no está escribiendo en un input
+    if (e.code === "Space" && e.target.tagName !== "INPUT" && e.target.tagName !== "TEXTAREA") {
+        e.preventDefault(); // evita que la página haga scroll
+        togglePlayPause();
+    }
+});
+
+function togglePlayPause() {
+    if (audio.paused) {
         audio.play();
         iconPlay.style.display = "none";
         iconPause.style.display = "inline";
-    }else{
+    } else {
         audio.pause();
         iconPlay.style.display = "inline";
         iconPause.style.display = "none";
     }
-});
+}

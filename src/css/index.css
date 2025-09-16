@@ -243,6 +243,24 @@ footer div{
   justify-content: center;
 }
 
+footer #datosReproductor{
+  justify-content: left !important;
+  height: 100%;
+  gap: 4%;
+  margin-left: 2%;
+}
+
+footer #datosReproductor img{
+  height: 90%;
+  width: 20%;
+}
+footer #datosReproductor div{
+  height: 90%;
+  width: 80%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 footer div .controls{
   width: 100%;
   display: flex;
