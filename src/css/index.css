@@ -247,12 +247,12 @@ footer #datosReproductor{
   justify-content: left !important;
   height: 100%;
   gap: 4%;
-  margin-left: 2%;
 }
 
 footer #datosReproductor img{
   height: 90%;
   width: 20%;
+  margin-left: 5%;
 }
 footer #datosReproductor div{
   height: 90%;
@@ -331,4 +331,46 @@ footer div .controls{
 
 .time-controls progress{
   width: 90%;
+}
+
+#opcionesReproductor .volumen .volume:hover {
+  filter: invert(1);
+  cursor: pointer;
+
+}
+
+#opcionesReproductor .volumen .volume:hover + #volumenRango::-webkit-slider-runnable-track{
+  /* background: linear-gradient(to right, #1DB954 50%, rgb(71, 71, 71) 50%); */
+}
+
+#opcionesReproductor .volumen .volume{
+  width: 20px;
+  height: 20px;
+  filter: invert(0.7);
+}
+
+#opcionesReproductor .volumen #volumenRango{
+  appearance: none;
+  -webkit-appearance: none;
+  width: 60%;
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+}
+#volumenRango::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+}
+#volumenRango::-webkit-slider-runnable-track:hover {
+  cursor: pointer;
+}
+#volumenRango::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  margin-top: -4px;
 }

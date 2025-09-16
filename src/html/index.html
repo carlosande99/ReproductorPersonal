@@ -64,7 +64,7 @@
   </main>
   <footer>
     <div id="datosReproductor">
-      
+      <!-- informacion de la musica -->
     </div>
 
     <div id="reproductor">
@@ -97,7 +97,12 @@
     </div>
 
     <div id="opcionesReproductor">
-      cola/letra/volumen/minireproductor
+      <!-- cola/letra/volumen/minireproductor -->
+       <div class="volumen">
+          <img src="../svg/volume-mid-svgrepo-com.svg" alt="volumen" class="volume" id="volume">
+          <input type="range" id="volumenRango" min="0" max="1" step="0.01" value="0.5">
+       </div>
+      
     </div>
   </footer>
   <script src="../js/index.js"></script>

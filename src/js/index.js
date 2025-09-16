@@ -11,7 +11,9 @@ const durTime = document.getElementById('durTime');
 const play = document.getElementById('play');
 const iconPlay = document.getElementById("icon-play");
 const iconPause = document.getElementById("icon-pause");
-const datosReproductor = document.getElementById("datosReproductor")
+const datosReproductor = document.getElementById("datosReproductor");
+const volumen = document.getElementById("volumenRango");
+const volumeSVG = document.getElementById("volume")
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -137,3 +139,35 @@ function togglePlayPause() {
         iconPause.style.display = "none";
     }
 }
+
+volumen.addEventListener("input", (e) => {
+    const vol = e.target.value;
+    audio.volume = vol;
+    volumen.textContent = Math.round(vol * 100) + "%";
+    if(vol > 0.66){
+        volumeSVG.src = "../svg/volume-max-svgrepo-com.svg"
+    }
+    if(vol < 0.66 && vol > 0.33){
+        volumeSVG.src = "../svg/volume-mid-svgrepo-com.svg"
+    }
+    if(vol < 0.33 && vol > 0){
+        volumeSVG.src = "../svg/volume-min-svgrepo-com.svg"
+    }
+    if(vol == 0){
+        volumeSVG.src = "../svg/volume-xmark-svgrepo-com.svg"
+    }
+});
+
+function actualizarColorVolumen(hover = false){
+    const val = volumen.value;
+    const porcentaje = (val - volumen.min) / (volumen.max - volumen.min) * 100;
+    const color = hover ? "#1DB954" : "#ccc";
+    volumen.style.background = `linear-gradient(to right, ${color} ${porcentaje}%, rgb(71, 71, 71) ${porcentaje}%)`;
+}
+
+volumen.addEventListener("input", () => actualizarColorVolumen(true));
+volumen.addEventListener("mouseenter", () => actualizarColorVolumen(true));
+volumen.addEventListener("mouseleave", () => actualizarColorVolumen(false));
+volumeSVG.addEventListener("mouseenter", () => actualizarColorVolumen(true));
+volumeSVG.addEventListener("mouseleave", () => actualizarColorVolumen(false));
+actualizarColorVolumen(false);
