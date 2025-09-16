@@ -103,12 +103,26 @@ function calcularDuracion(duracion) {
   return `${minStr}:${secStr}`;
 }
 
+let ishover = false;
+
+function actualizarRelleno() {
+    const val = progress.value;
+    const porcentaje = val * 100; // porque min=0 y max=1
+    const color = ishover ? "#1DB954" : "#ccc";
+    progress.style.background = `linear-gradient(to right, ${color} ${porcentaje}%, rgb(71, 71, 71) ${porcentaje}%)`;
+}
+
 audio.addEventListener('timeupdate', () => {
     if (!audio.duration) return;
-    progress.value = (audio.currentTime / audio.duration) * 100;
+    progress.value = (audio.currentTime / audio.duration);
     curTime.textContent = calcularDuracion(audio.currentTime * 1000);
-
+    actualizarRelleno();
 });
+
+progress.addEventListener("input", () => actualizarRelleno());
+progress.addEventListener("mouseenter", () => {ishover = true; actualizarRelleno()});
+progress.addEventListener("mouseleave", () => {ishover = false; actualizarRelleno()});
+actualizarRelleno();
 
 progress.addEventListener("click", (e) => {
     const rect = progress.getBoundingClientRect();
@@ -140,8 +154,10 @@ function togglePlayPause() {
     }
 }
 
-volumen.addEventListener("input", (e) => {
-    const vol = e.target.value;
+volumen.addEventListener("input", (e) => modificarVolumen(e));
+
+function modificarVolumen(e, valor=null){
+    const vol = valor !== null ? valor : e.target.value;
     audio.volume = vol;
     volumen.textContent = Math.round(vol * 100) + "%";
     if(vol > 0.66){
@@ -155,6 +171,24 @@ volumen.addEventListener("input", (e) => {
     }
     if(vol == 0){
         volumeSVG.src = "../svg/volume-xmark-svgrepo-com.svg"
+    }
+};
+
+let audioInicio = 0;
+let audioColor =  0;
+volumeSVG.addEventListener("click", (e) => {
+    if(audio.volume > 0){
+        audioInicio = audio.volume;
+        audioColor = volumen.value;
+        audio.volume = 0;
+        volumen.value = 0;
+        modificarVolumen(null, 0);
+        actualizarColorVolumen(true);
+    }else{
+        audio.volume = audioInicio;
+        volumen.value = audioColor;
+        modificarVolumen(null, audioInicio);
+        actualizarColorVolumen(true);
     }
 });
 
