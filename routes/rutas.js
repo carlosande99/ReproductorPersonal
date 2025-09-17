@@ -4,7 +4,8 @@ import {obtenerCancion, extraerIdDeUrl} from '../controllers/cancionId.js';
 
 async function main(trackId) {
   await authenticate();
-  await obtenerCancion(trackId);
+  const song = await obtenerCancion(trackId);
+  return song;
 }
 
 export const añadirCancion = async (req, res) => {
@@ -17,10 +18,8 @@ export const añadirCancion = async (req, res) => {
 
     const trackId = extraerIdDeUrl(url);
     console.log("Track ID:", trackId);
-
-    await main(trackId);
-
-    res.send("Canción descargada");
+    const song  = await main(trackId)
+    res.json(song);
   } catch (error) {
     console.error("Error en añadirCancion:", error);
     res.status(500).send("Hubo un error al procesar la canción");

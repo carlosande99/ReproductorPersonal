@@ -19,11 +19,14 @@ form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const url = document.getElementById('url').value;
     try {
-        await fetch("/", {
+        const response = await fetch("/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ url })
         });
+
+        const serverData = await response.json();
+        console.log(serverData);
     } catch (err) {
         console.error("Error en la petición:", err);
     }

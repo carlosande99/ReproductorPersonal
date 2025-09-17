@@ -45,6 +45,7 @@ export async function obtenerCancion(trackId) {
     // Agregar la nueva canción
     datos.push(song);
     fs.writeFileSync(jsonPath, JSON.stringify(datos, null, 2), 'utf-8');
+    return song;
   } catch (err) {
     console.error('Error al obtener canción:', err);
   }
