@@ -1,14 +1,14 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { añadirCancion } from './routes/rutas.js';
+import { añadirCancion, siguienteCancion } from './routes/rutas.js';
 import fs from 'fs';
 const app = express();
 const PORT = 8888;
 
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+export const __dirname = path.dirname(__filename);
 
 app.use(express.static(path.join(__dirname, 'src')));
 app.use(express.json());
@@ -25,6 +25,8 @@ app.get('/songs', (req, res) => {
 });
 
 app.use("/musica", express.static(path.join(__dirname, 'src','music')));
+
+app.post('/next', siguienteCancion);
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);

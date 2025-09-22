@@ -13,7 +13,9 @@ const iconPlay = document.getElementById("icon-play");
 const iconPause = document.getElementById("icon-pause");
 const datosReproductor = document.getElementById("datosReproductor");
 const volumen = document.getElementById("volumenRango");
-const volumeSVG = document.getElementById("volume")
+const volumeSVG = document.getElementById("volume");
+const numCanciones = document.getElementById("numCanciones");
+const next = document.getElementById("next");
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -35,7 +37,8 @@ form.addEventListener('submit', async (e) => {
 fetch("/songs")
     .then(response => response.json())
     .then(serverData => {
-        console.log("Datos recibidos del servidor:", serverData);
+        console.log(serverData);
+        numCanciones.textContent = serverData.length;
         serverData.forEach(item => {
             const tr = document.createElement('tr');
             const td1 = document.createElement('td');
@@ -79,7 +82,11 @@ fetch("/songs")
                 datosReproductor.appendChild(img.cloneNode(true));
                 datosReproductor.appendChild(div2);
                 audio.play();
+                audio.className = "";
+                audio.classList.add(item.idCancion);
             };
+
+            tr.id = item.id;
 
             tr.appendChild(td1);
             tr.appendChild(td2);
@@ -208,3 +215,21 @@ volumen.addEventListener("mouseleave", () => actualizarColorVolumen(false));
 volumeSVG.addEventListener("mouseenter", () => actualizarColorVolumen(true));
 volumeSVG.addEventListener("mouseleave", () => actualizarColorVolumen(false));
 actualizarColorVolumen(false);
+
+next.addEventListener("click", siguienteCancion);
+
+async function siguienteCancion(){
+    const idCancion = audio.className;
+    if(idCancion !== ""){
+        const response = await fetch("/next", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ idCancion })
+        });
+        const serverData = await response.json();
+        console.log(serverData);
+        audio.className = serverData.idCancion;
+        audio.src = `/musica/${serverData.idCancion}.mp3`;
+        audio.play();
+    }
+}

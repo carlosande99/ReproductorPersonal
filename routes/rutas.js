@@ -1,7 +1,8 @@
 import {authenticate} from '../services/autentificacion.js';
 import {obtenerCancion, extraerIdDeUrl} from '../controllers/cancionId.js';
-
-
+import fs from 'fs';
+import path from 'path';
+import { __dirname } from '../server.js';
 async function main(trackId) {
   await authenticate();
   const song = await obtenerCancion(trackId);
@@ -23,5 +24,26 @@ export const añadirCancion = async (req, res) => {
   } catch (error) {
     console.error("Error en añadirCancion:", error);
     res.status(500).send("Hubo un error al procesar la canción");
+  }
+}
+
+export const siguienteCancion = async(req, res) => {
+  try{
+    const {idCancion} = req.body;
+    const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'src','datos.json'), 'utf8'))
+    
+    const index = data.findIndex(song => song.idCancion === idCancion);
+
+    if(index === -1){
+      return res.status(404).json({error: "Canción no encontrada"});
+    }
+
+    const nextIndex = (index + 1) % data.length;
+    const nextSong =  data[nextIndex];
+
+    res.json(nextSong);
+  }catch(error){
+    console.error("Error en poner la siguiente cancion:", error);
+    res.status(500).send("Hubo un error al procesar la siguiente canción");
   }
 }
