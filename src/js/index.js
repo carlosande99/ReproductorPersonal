@@ -48,7 +48,6 @@ fetch("/songs")
         })
     })
     .catch(err => console.error("Error al obtener las canciones:", err));
-
 btn_close.addEventListener("click", borrarBuscador);
 
 function borrarBuscador(){
@@ -145,8 +144,12 @@ function actualizarRelleno() {
 audio.addEventListener('timeupdate', () => {
     if (!audio.duration) return;
     progress.value = (audio.currentTime / audio.duration);
+    console.log(progress.value)
     curTime.textContent = calcularDuracion(audio.currentTime * 1000);
     actualizarRelleno();
+    if(progress.value == 1){
+        siguienteCancion();
+    }
 });
 
 progress.addEventListener("input", () => actualizarRelleno());

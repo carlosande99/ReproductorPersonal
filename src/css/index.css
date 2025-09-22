@@ -4,17 +4,25 @@
   --color-gradient-end: #2E085A;
   --color-primary: #121212;
   --color-secondary: #242121;
+  --color-secondary-span: rgb(114, 114, 114);
+  --color-background-hover: rgba(68, 68, 68, 0.616);
+}
+@font-face {
+  font-family: 'Spotify Mix';
+  src: url('../fonts/Metropolis-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
 }
 body {
   background-color: #121212;
   color: #fff;
-  font-family: 'Arial', sans-serif;
   padding: 0;
   margin: 0;
   max-height: 100vh;
   display: flex;
   flex-wrap: wrap;
   text-align: center;
+  font-family: 'Spotify Mix';
 }
 
 header {
@@ -142,7 +150,7 @@ main section .article-main{
   );
   height: 40%;
   display: flex;
-  align-items: center;
+  align-items: end; 
 }
 
 main section .img-song{
@@ -156,6 +164,14 @@ main section .info-song{
   display: flex;
   flex-direction: column;
   text-align: start;
+}
+
+.info-song p{
+  font-size: 5em;
+  font-weight: 900;
+  line-height: 1;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 main section .article-secondary{
@@ -189,7 +205,7 @@ table tbody tr > th{
 }
 
 table tbody tr:hover > td{
-  background-color: var(--color-primary);
+  background-color: var(--color-background-hover);
   cursor: pointer;
 }
 
@@ -206,8 +222,11 @@ table tbody td:not(:first-child), table tbody th:not(:first-child){
 }
 
 table tbody td img{
-  width: 9%;
+  width: 8%;
   height: 100%;
+  border-radius: 10%;
+  margin-right: 2%;
+  outline: 2px solid rgba(0,0,0,0.4);
 }
 
 table tbody td div{
@@ -216,6 +235,11 @@ table tbody td div{
   text-align: left;
   justify-content: center;
   height: 100%;
+  gap: 10%;
+}
+
+tr td div span:nth-of-type(2){
+  color: var(--color-secondary-span);
 }
 
 main aside{
@@ -252,15 +276,21 @@ footer #datosReproductor{
 }
 
 footer #datosReproductor img{
-  height: 90%;
-  width: 20%;
-  margin-left: 5%;
+  height: 60%;
+  width: 10%;
+  margin-left: 3%;
+  border-radius: 8%;
+  outline: 2px solid rgba(0,0,0,0.4);
 }
 footer #datosReproductor div{
   height: 90%;
   width: 80%;
   flex-direction: column;
   align-items: flex-start;
+}
+
+#datosReproductor div span:nth-of-type(2){
+  color: var(--color-secondary-span);
 }
 
 footer div .controls{
