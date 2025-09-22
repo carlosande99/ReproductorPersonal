@@ -16,10 +16,12 @@ const volumen = document.getElementById("volumenRango");
 const volumeSVG = document.getElementById("volume");
 const numCanciones = document.getElementById("numCanciones");
 const next = document.getElementById("next");
+const urlInput = document.getElementById('url');
+const btn_close = document.getElementById("btn-close");
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const url = document.getElementById('url').value;
+    const url = urlInput.value;
     try {
         const response = await fetch("/", {
             method: "POST",
@@ -28,7 +30,9 @@ form.addEventListener('submit', async (e) => {
         });
 
         const serverData = await response.json();
-        console.log(serverData);
+        numCanciones.textContent = +numCanciones.textContent + 1;
+        añadirCancionTabla(serverData);
+        borrarBuscador();
     } catch (err) {
         console.error("Error en la petición:", err);
     }
@@ -40,56 +44,66 @@ fetch("/songs")
         console.log(serverData);
         numCanciones.textContent = serverData.length;
         serverData.forEach(item => {
-            const tr = document.createElement('tr');
-            const td1 = document.createElement('td');
-            const td2 = document.createElement('td');
-            const td3 = document.createElement('td');
-            const td4 = document.createElement('td');
-            const div = document.createElement('div');
-
-            const img = document.createElement('img');
-            const title = document.createElement('span');
-            const artist = document.createElement('span');
-            
-            img.src = item.datos.caractula;
-
-            td1.textContent = item.id;
-
-            title.textContent = item.datos.title;
-
-            artist.textContent = item.datos.artist;
-
-            td3.textContent = item.datos.album;
-            td4.textContent = calcularDuracion(item.datos.duracion);
-
-            td2.appendChild(img);
-            div.appendChild(title);
-            div.appendChild(artist);
-            td2.appendChild(div);
-
-            tr.onclick = () => {
-                const div2 = document.createElement('div');
-                const songDuration = calcularDuracion(item.datos.duracion);
-
-                let audio = document.getElementById('audio');
-                audio.src = `/musica/${item.idCancion}.mp3`;
-
-                añadirDatosAlReproductor(img, title, artist, div2, songDuration)
-
-                audio.play();
-                audio.className = item.idCancion;
-            };
-
-            tr.id = item.id;
-
-            tr.appendChild(td1);
-            tr.appendChild(td2);
-            tr.appendChild(td3);
-            tr.appendChild(td4);
-            list.appendChild(tr);
+            añadirCancionTabla(item);
         })
     })
     .catch(err => console.error("Error al obtener las canciones:", err));
+
+btn_close.addEventListener("click", borrarBuscador);
+
+function borrarBuscador(){
+    urlInput.value = "";
+}
+
+function añadirCancionTabla(item){
+    const tr = document.createElement('tr');
+    const td1 = document.createElement('td');
+    const td2 = document.createElement('td');
+    const td3 = document.createElement('td');
+    const td4 = document.createElement('td');
+    const div = document.createElement('div');
+
+    const img = document.createElement('img');
+    const title = document.createElement('span');
+    const artist = document.createElement('span');
+    
+    img.src = item.datos.caractula;
+
+    td1.textContent = item.id;
+
+    title.textContent = item.datos.title;
+
+    artist.textContent = item.datos.artist;
+
+    td3.textContent = item.datos.album;
+    td4.textContent = calcularDuracion(item.datos.duracion);
+
+    td2.appendChild(img);
+    div.appendChild(title);
+    div.appendChild(artist);
+    td2.appendChild(div);
+
+    tr.onclick = () => {
+        const div2 = document.createElement('div');
+        const songDuration = calcularDuracion(item.datos.duracion);
+
+        let audio = document.getElementById('audio');
+        audio.src = `/musica/${item.idCancion}.mp3`;
+
+        añadirDatosAlReproductor(img, title, artist, div2, songDuration)
+
+        audio.play();
+        audio.className = item.idCancion;
+    };
+
+    tr.id = item.id;
+
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3);
+    tr.appendChild(td4);
+    list.appendChild(tr);
+}
 
 function añadirDatosAlReproductor(img, title, artist, div2, songDuration){
     durTime.textContent = songDuration;
