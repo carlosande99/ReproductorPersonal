@@ -70,20 +70,14 @@ fetch("/songs")
             tr.onclick = () => {
                 const div2 = document.createElement('div');
                 const songDuration = calcularDuracion(item.datos.duracion);
-                durTime.textContent = songDuration;
 
                 let audio = document.getElementById('audio');
                 audio.src = `/musica/${item.idCancion}.mp3`;
-                iconPlay.style.display = "none";
-                iconPause.style.display = "inline";
-                datosReproductor.replaceChildren();
-                div2.appendChild(title.cloneNode(true));
-                div2.appendChild(artist.cloneNode(true));
-                datosReproductor.appendChild(img.cloneNode(true));
-                datosReproductor.appendChild(div2);
+
+                añadirDatosAlReproductor(img, title, artist, div2, songDuration)
+
                 audio.play();
-                audio.className = "";
-                audio.classList.add(item.idCancion);
+                audio.className = item.idCancion;
             };
 
             tr.id = item.id;
@@ -96,6 +90,18 @@ fetch("/songs")
         })
     })
     .catch(err => console.error("Error al obtener las canciones:", err));
+
+function añadirDatosAlReproductor(img, title, artist, div2, songDuration){
+    durTime.textContent = songDuration;
+    iconPlay.style.display = "none";
+    iconPause.style.display = "inline";
+    datosReproductor.replaceChildren();
+
+    div2.appendChild(title.cloneNode(true));
+    div2.appendChild(artist.cloneNode(true));
+    datosReproductor.appendChild(img.cloneNode(true));
+    datosReproductor.appendChild(div2);
+}
 
 // pasa de ms a mm:ss
 function calcularDuracion(duracion) {
@@ -227,7 +233,15 @@ async function siguienteCancion(){
             body: JSON.stringify({ idCancion })
         });
         const serverData = await response.json();
-        console.log(serverData);
+        const songDuration = calcularDuracion(serverData.datos.duracion);
+        const div2 = document.createElement("div");
+        const img = document.createElement("img");
+        const title = document.createElement("span");
+        const artist = document.createElement("span");
+        img.src = serverData.datos.caractula;
+        title.textContent = serverData.datos.title;
+        artist.textContent = serverData.datos.artist;
+        añadirDatosAlReproductor(img, title, artist, div2, songDuration)
         audio.className = serverData.idCancion;
         audio.src = `/musica/${serverData.idCancion}.mp3`;
         audio.play();
