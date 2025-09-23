@@ -17,9 +17,12 @@ const volumeSVG = document.getElementById("volume");
 const numCanciones = document.getElementById("numCanciones");
 const next = document.getElementById("next");
 const prev = document.getElementById("prev");
+const repeat = document.getElementById("repeat");
+const suffle = document.getElementById("suffle");
 const urlInput = document.getElementById('url');
 const btn_close = document.getElementById("btn-close");
-
+let repetir = false;
+let aleatorio = false;
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const url = urlInput.value;
@@ -241,29 +244,36 @@ actualizarColorVolumen(false);
 
 next.addEventListener("click", siguienteCancion);
 prev.addEventListener("click", anteriorCancion);
+
 async function siguienteCancion(){
     const idCancion = audio.className;
-    if(idCancion !== ""){
+    if(idCancion !== "" && repetir == false){
         const response = await fetch("/next", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ idCancion })
+            body: JSON.stringify({ idCancion, aleatorio })
         });
         const serverData = await response.json();
         datosCancion(serverData)
+    }else{
+        audio.currentTime = 0;
+        audio.play();
     }
 }
 
 async function anteriorCancion(){
     const idCancion = audio.className;
-    if(idCancion !== ""){
+    if(idCancion !== "" && repetir == false){
         const response = await fetch("/prev", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ idCancion })
+            body: JSON.stringify({ idCancion, aleatorio })
         });
         const serverData = await response.json();
         datosCancion(serverData)
+    }else{
+        audio.currentTime = 0;
+        audio.play();
     }
 }
 
@@ -280,4 +290,16 @@ function datosCancion(serverData){
     audio.className = serverData.idCancion;
     audio.src = `/musica/${serverData.idCancion}.mp3`;
     audio.play();
+}
+
+repeat.addEventListener("click", repetirCancion);
+function repetirCancion(){
+    repetir = !repetir;
+    repeat.firstElementChild.style.filter = repetir ? "invert(38%) sepia(85%) saturate(356%) hue-rotate(84deg) brightness(95%) contrast(94%)" : "invert(0.7)";
+}
+
+suffle.addEventListener("click", cancionAleatoria)
+function cancionAleatoria(){
+    aleatorio = !aleatorio;
+    suffle.firstElementChild.style.filter = aleatorio ? "invert(38%) sepia(85%) saturate(356%) hue-rotate(84deg) brightness(95%) contrast(94%)" : "invert(0.7)";
 }
