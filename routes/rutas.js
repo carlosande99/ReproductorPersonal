@@ -29,19 +29,29 @@ export const añadirCancion = async (req, res) => {
 
 export const siguienteCancion = async(req, res) => {
   try{
-    const {idCancion} = req.body;
+    const {idCancion, aleatorio} = req.body;
     const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'src','datos.json'), 'utf8'))
-    
     const index = data.findIndex(song => song.idCancion === idCancion);
+    if(aleatorio == false){
+      if(index === -1){
+        return res.status(404).json({error: "Canción no encontrada"});
+      }
 
-    if(index === -1){
-      return res.status(404).json({error: "Canción no encontrada"});
+      const nextIndex = (index + 1) % data.length;
+      const nextSong =  data[nextIndex];
+      res.json(nextSong);
+    }else{
+      if (index === -1) {
+        return res.status(404).json({ error: "Canción no encontrada" });
+      }
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * data.length);
+      } while (randomIndex === index);
+
+      const randomSong = data[randomIndex];
+      res.json(randomSong);
     }
-
-    const nextIndex = (index + 1) % data.length;
-    const nextSong =  data[nextIndex];
-
-    res.json(nextSong);
   }catch(error){
     console.error("Error en poner la siguiente cancion:", error);
     res.status(500).send("Hubo un error al procesar la siguiente canción");

@@ -267,7 +267,7 @@ async function anteriorCancion(){
         const response = await fetch("/prev", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ idCancion, aleatorio })
+            body: JSON.stringify({ idCancion })
         });
         const serverData = await response.json();
         datosCancion(serverData)
