@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { añadirCancion, siguienteCancion } from './routes/rutas.js';
+import { añadirCancion, siguienteCancion, anteriorCancion } from './routes/rutas.js';
 import fs from 'fs';
 const app = express();
 const PORT = 8888;
@@ -27,6 +27,8 @@ app.get('/songs', (req, res) => {
 app.use("/musica", express.static(path.join(__dirname, 'src','music')));
 
 app.post('/next', siguienteCancion);
+
+app.post('/prev', anteriorCancion);
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);

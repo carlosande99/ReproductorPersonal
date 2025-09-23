@@ -47,3 +47,24 @@ export const siguienteCancion = async(req, res) => {
     res.status(500).send("Hubo un error al procesar la siguiente canción");
   }
 }
+
+export const anteriorCancion = async(req, res) => {
+  try{
+    const {idCancion} = req.body;
+    const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'src','datos.json'), 'utf8'))
+    
+    const index = data.findIndex(song => song.idCancion === idCancion);
+
+    if(index === -1){
+      return res.status(404).json({error: "Canción no encontrada"});
+    }
+
+    const prevIndex = (index - 1 + data.length) % data.length;
+    const prevSong =  data[prevIndex];
+
+    res.json(prevSong);
+  }catch(error){
+    console.error("Error en poner la siguiente cancion:", error);
+    res.status(500).send("Hubo un error al procesar la anterior canción");
+  }
+}

@@ -16,6 +16,7 @@ const volumen = document.getElementById("volumenRango");
 const volumeSVG = document.getElementById("volume");
 const numCanciones = document.getElementById("numCanciones");
 const next = document.getElementById("next");
+const prev = document.getElementById("prev");
 const urlInput = document.getElementById('url');
 const btn_close = document.getElementById("btn-close");
 
@@ -144,7 +145,6 @@ function actualizarRelleno() {
 audio.addEventListener('timeupdate', () => {
     if (!audio.duration) return;
     progress.value = (audio.currentTime / audio.duration);
-    console.log(progress.value)
     curTime.textContent = calcularDuracion(audio.currentTime * 1000);
     actualizarRelleno();
     if(progress.value == 1){
@@ -240,7 +240,7 @@ volumeSVG.addEventListener("mouseleave", () => actualizarColorVolumen(false));
 actualizarColorVolumen(false);
 
 next.addEventListener("click", siguienteCancion);
-
+prev.addEventListener("click", anteriorCancion);
 async function siguienteCancion(){
     const idCancion = audio.className;
     if(idCancion !== ""){
@@ -250,17 +250,34 @@ async function siguienteCancion(){
             body: JSON.stringify({ idCancion })
         });
         const serverData = await response.json();
-        const songDuration = calcularDuracion(serverData.datos.duracion);
-        const div2 = document.createElement("div");
-        const img = document.createElement("img");
-        const title = document.createElement("span");
-        const artist = document.createElement("span");
-        img.src = serverData.datos.caractula;
-        title.textContent = serverData.datos.title;
-        artist.textContent = serverData.datos.artist;
-        añadirDatosAlReproductor(img, title, artist, div2, songDuration)
-        audio.className = serverData.idCancion;
-        audio.src = `/musica/${serverData.idCancion}.mp3`;
-        audio.play();
+        datosCancion(serverData)
     }
+}
+
+async function anteriorCancion(){
+    const idCancion = audio.className;
+    if(idCancion !== ""){
+        const response = await fetch("/prev", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ idCancion })
+        });
+        const serverData = await response.json();
+        datosCancion(serverData)
+    }
+}
+
+function datosCancion(serverData){
+    const songDuration = calcularDuracion(serverData.datos.duracion);
+    const div2 = document.createElement("div");
+    const img = document.createElement("img");
+    const title = document.createElement("span");
+    const artist = document.createElement("span");
+    img.src = serverData.datos.caractula;
+    title.textContent = serverData.datos.title;
+    artist.textContent = serverData.datos.artist;
+    añadirDatosAlReproductor(img, title, artist, div2, songDuration)
+    audio.className = serverData.idCancion;
+    audio.src = `/musica/${serverData.idCancion}.mp3`;
+    audio.play();
 }
