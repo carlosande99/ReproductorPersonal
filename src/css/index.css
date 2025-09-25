@@ -1,7 +1,8 @@
 :root{
   --color-gradient-start: #5A1FA5;
-  --color-gradient-mid: #3D0C7C;
-  --color-gradient-end: #2E085A;
+  --color-gradient-mid: #470f8f;
+  --color-gradient-end: #380a6b;
+  --color-gradient-end2: #1b0731;
   --color-primary: #121212;
   --color-secondary: #242121;
   --color-secondary-span: rgb(114, 114, 114);
@@ -127,18 +128,23 @@ main{
   width: 100%;
   height: 83vh;
   display: flex;
+  background-color: var(--color-primary);
 }
 
 main nav {
   width: 15%;
   background-color: var(--color-secondary);
+  border-radius: 15px 15px 15px 15px;
+  margin-left: 0.2%;
 }
 
 main section{
   width: 70%;
-  background-color: var(--color-secondary);
+  background-color: var(--color-primary);
   display: flex;
   flex-direction: column;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
 }
 
 main section .article-main{
@@ -150,13 +156,15 @@ main section .article-main{
   );
   height: 40%;
   display: flex;
-  align-items: end; 
+  align-items: end;
+  border-radius: 15px 15px 0px 0px;
 }
 
 main section .img-song{
-  width: 200px;
-  height: 200px;
-  margin: 20px;
+  width: 20%;
+  height: 70%;
+  margin-left: 20px;
+  margin-right: 20px;
   border-radius: 10px;
 }
 
@@ -178,20 +186,39 @@ main section .article-secondary{
     background: linear-gradient(
     to bottom,
     var(--color-gradient-end),
-    var(--color-secondary),
-    var(--color-secondary)
+    var( --color-gradient-end2),
+    var(--color-primary)
   );
   height: 60%;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
+  /* border-top: solid 5px black; */
+}
+
+.article-secondary::-webkit-scrollbar{
+  width: 10px;
+}
+
+.article-secondary::-webkit-scrollbar-track{
+  background: transparent;
+}
+
+.article-secondary::-webkit-scrollbar-thumb{
+  background-color: transparent;
+  transition: background-color 1s ease;
+}
+
+.article-secondary:hover::-webkit-scrollbar-thumb{
+  background-color: rgb(87, 83, 83);
 }
 
 table{
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 8px;
+  margin-top: 1%;
 }
 
 table tbody{
@@ -202,6 +229,7 @@ table tbody{
 
 table tbody tr > th{
   border-bottom: 0.5px solid gray;
+  margin-bottom: 10px;
 }
 
 table tbody tr:hover > td{
