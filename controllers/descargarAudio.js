@@ -44,7 +44,6 @@ async function descargarAudio(url, nombreArchivo) {
           console.warn("ytdl-core tardó demasiado, cancelando...");
           stream.destroy();
           archivo.close(() => {
-            // 🔥 BORRAR el archivo incompleto
             fs.unlink(rutaArchivo, (err) => {
               if (err) console.error("Error al borrar archivo incompleto:", err);
               resolve("fallback");
@@ -79,7 +78,7 @@ async function descargarAudio(url, nombreArchivo) {
               console.error("Error al descargar con yt-dlp:", error.message);
               return reject(error);
             }
-            console.log("✅ Descarga completada con yt-dlp:", tempFile);
+            console.log("Descarga completada con yt-dlp:", tempFile);
             resolve();
           });
         });

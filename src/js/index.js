@@ -21,6 +21,7 @@ const repeat = document.getElementById("repeat");
 const suffle = document.getElementById("suffle");
 const urlInput = document.getElementById('url');
 const btn_close = document.getElementById("btn-close");
+const aside = document.getElementById("aside");
 let repetir = false;
 let aleatorio = false;
 form.addEventListener('submit', async (e) => {
@@ -94,7 +95,7 @@ function añadirCancionTabla(item){
         audio.src = `/musica/${item.idCancion}.mp3`;
 
         añadirDatosAlReproductor(img, title, artist, div2, songDuration)
-
+        añadirDatosAlAside(img, title, artist);
         audio.play();
         audio.className = item.idCancion;
     };
@@ -118,6 +119,17 @@ function añadirDatosAlReproductor(img, title, artist, div2, songDuration){
     div2.appendChild(artist.cloneNode(true));
     datosReproductor.appendChild(img.cloneNode(true));
     datosReproductor.appendChild(div2);
+}
+
+function añadirDatosAlAside(img, title, artist){
+    const div3 = document.createElement('div');
+    const div4 = document.createElement('div');
+    aside.replaceChildren();
+    div3.appendChild(img.cloneNode(true));
+    div4.appendChild(title.cloneNode(true));
+    div4.appendChild(artist.cloneNode(true));
+    aside.appendChild(div3);
+    aside.appendChild(div4);
 }
 
 // pasa de ms a mm:ss
