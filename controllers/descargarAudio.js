@@ -1,7 +1,8 @@
 import fs from 'fs';
+import path from 'path';
 import playdl from 'play-dl';
 import ytdl from '@distube/ytdl-core';
-
+import {exec} from "child_process"
 // Crear carpeta 'descargas' si no existe
 const carpetaDescargas = './src/music';
 export let duration_ms = 0;
@@ -27,25 +28,69 @@ async function buscarCancionEnYoutube(titulo, artista) {
 }
 
 async function descargarAudio(url, nombreArchivo) {
-    try{
-        return new Promise((resolve, reject) => {
-        const archivo = fs.createWriteStream(nombreArchivo);
-        ytdl(url, { filter: 'audioonly' })
-            .pipe(archivo)
-            .on('finish', () => {
-                console.log('Descarga completada');
-                resolve();
-            })
-            .on('error', (err) => {
-                console.error('Error al descargar el audio:', err);
-                reject(err);
-            });
-    });
-    }catch(err){
-        console.error('Error al descargar el audio:', err);
-    }
-}
+  const TIMEOUT = 10000; // 10 segundos
+  const rutaArchivo = nombreArchivo + ".mp3";
+  const tempFile = nombreArchivo;
+  try {
+    console.log("Intentando descargar con ytdl-core...");
 
+    await new Promise((resolve) => {
+      const archivo = fs.createWriteStream(rutaArchivo);
+      const stream = ytdl(url, { filter: "audioonly" });
+      let terminado = false;
+
+      const timer = setTimeout(() => {
+        if (!terminado) {
+          console.warn("ytdl-core tardó demasiado, cancelando...");
+          stream.destroy();
+          archivo.close(() => {
+            // 🔥 BORRAR el archivo incompleto
+            fs.unlink(rutaArchivo, (err) => {
+              if (err) console.error("Error al borrar archivo incompleto:", err);
+              resolve("fallback");
+            });
+          });
+          terminado = true;
+          resolve("fallback");
+        }
+      }, TIMEOUT);
+
+      stream.pipe(archivo)
+        .on("finish", () => {
+          terminado = true;
+          clearTimeout(timer);
+          console.log("Descarga completada con ytdl-core");
+          resolve("success");
+        })
+        .on("error", (err) => {
+          terminado = true;
+          clearTimeout(timer);
+          archivo.close();
+          console.warn("ytdl-core falló, pasando a yt-dlp...");
+          resolve("fallback");
+        });
+    }).then(async (resultado) => {
+      if (resultado === "fallback") {
+        console.log("Usando yt-dlp como respaldo...");
+        await new Promise((resolve, reject) => {
+          const comando = `yt-dlp -x --audio-format mp3 -o "${tempFile}.%(ext)s" "${url}"`;
+          exec(comando, (error, stdout, stderr) => {
+            if (error) {
+              console.error("Error al descargar con yt-dlp:", error.message);
+              return reject(error);
+            }
+            console.log("✅ Descarga completada con yt-dlp:", tempFile);
+            resolve();
+          });
+        });
+      }
+    });
+  } catch (err) {
+    console.error("Error inesperado al descargar el audio:", err);
+  }finally{
+    limpiarArchivosTemporales();
+  }
+}
 export async function descargarCancion(titulo, artista, id) {
   try {
     console.log(`Buscando "${titulo}" de ${artista} en YouTube...`);
@@ -54,7 +99,7 @@ export async function descargarCancion(titulo, artista, id) {
     duration_ms = await obtenerDuracion(url);
     console.log(`Duración en ms: ${duration_ms}`);
 
-    const nombreArchivo = `${carpetaDescargas}/${id}.mp3`;
+    const nombreArchivo = `${carpetaDescargas}/${id}`;
     console.log('Descargando audio...');
 
     await descargarAudio(url, nombreArchivo);
@@ -73,4 +118,20 @@ async function obtenerDuracion(url){
   }catch(err){
     console.error('Error al obtener la duración:', err);
   }
+}
+
+function limpiarArchivosTemporales() {
+  const carpetaActual = process.cwd();
+  const archivos = fs.readdirSync(carpetaActual);
+
+  archivos.forEach((archivo) => {
+    if (archivo.endsWith("-player-script.js")) {
+      try {
+        fs.unlinkSync(path.join(carpetaActual, archivo));
+        console.log(`Borrado archivo temporal: ${archivo}`);
+      } catch (err) {
+        console.warn(`No se pudo borrar ${archivo}:`, err.message);
+      }
+    }
+  });
 }
