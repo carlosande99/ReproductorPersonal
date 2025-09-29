@@ -86,6 +86,14 @@ async function descargarAudio(url, nombreArchivo) {
     });
   } catch (err) {
     console.error("Error inesperado al descargar el audio:", err);
+    try {
+      if (fs.existsSync(tempFile)) {
+        fs.unlinkSync(tempFile);
+        console.log("Archivo incompleto eliminado:", tempFile);
+      }
+    } catch (e) {
+      console.warn("No se pudo eliminar archivo temporal:", e.message);
+    }
   }finally{
     limpiarArchivosTemporales();
   }
