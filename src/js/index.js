@@ -124,12 +124,21 @@ function añadirDatosAlReproductor(img, title, artist, div2, songDuration){
 function añadirDatosAlAside(img, title, artist){
     const div3 = document.createElement('div');
     const div4 = document.createElement('div');
-    aside.replaceChildren();
+    const div5 = document.createElement('div');
+    const div6 = document.createElement('div');
+    const creditos = document.createElement('p');
+    creditos.textContent = "Créditos";
+    [...aside.children].forEach((child, index) => {
+        if (index > 0) child.remove(); // Borra todos excepto el primero
+    });
     div3.appendChild(img.cloneNode(true));
     div4.appendChild(title.cloneNode(true));
     div4.appendChild(artist.cloneNode(true));
+    div5.appendChild(creditos)
+    div6.appendChild(div5);
     aside.appendChild(div3);
     aside.appendChild(div4);
+    aside.appendChild(div6);
 }
 
 // pasa de ms a mm:ss
@@ -315,3 +324,41 @@ function cancionAleatoria(){
     aleatorio = !aleatorio;
     suffle.firstElementChild.style.filter = aleatorio ? "invert(38%) sepia(85%) saturate(356%) hue-rotate(84deg) brightness(95%) contrast(94%)" : "invert(0.7)";
 }
+
+
+
+function makeResizable(resizer, leftElement, isLeft = true, minPercent, maxPercent) {
+    let isResizing = false;
+
+    resizer.addEventListener("mousedown", function (e) {
+        isResizing = true;
+        document.body.style.cursor = "col-resize";
+    });
+
+    document.addEventListener("mousemove", function (e) {
+        if (!isResizing) return;
+
+        const parentWidth = leftElement.parentElement.offsetWidth;
+        let newWidth;
+
+        if (isLeft) {
+            newWidth = (e.clientX / parentWidth) * 100; // ancho en %
+        } else {
+            newWidth = ((parentWidth - e.clientX) / parentWidth) * 100;
+        }
+
+        // Limitar por mínimo y máximo
+        if (newWidth < minPercent) newWidth = minPercent;
+        if (newWidth > maxPercent) newWidth = maxPercent;
+
+        leftElement.style.width = newWidth + "%";
+    });
+
+    document.addEventListener("mouseup", function () {
+        isResizing = false;
+        document.body.style.cursor = "default";
+    });
+}
+
+makeResizable(document.getElementById("resize-nav"), document.querySelector("nav"), true, 5, 20);
+makeResizable(document.getElementById("resize-aside"), document.querySelector("aside"), false, 15, 20);
