@@ -22,6 +22,8 @@ const suffle = document.getElementById("suffle");
 const urlInput = document.getElementById('url');
 const btn_close = document.getElementById("btn-close");
 const aside = document.getElementById("aside");
+const tableWrapper = document.querySelector('.table-wrapper');
+const thead = document.querySelector('thead');
 let repetir = false;
 let aleatorio = false;
 form.addEventListener('submit', async (e) => {
@@ -362,3 +364,11 @@ function makeResizable(resizer, leftElement, isLeft = true, minPercent, maxPerce
 
 makeResizable(document.getElementById("resize-nav"), document.querySelector("nav"), true, 5, 20);
 makeResizable(document.getElementById("resize-aside"), document.querySelector("aside"), false, 15, 20);
+
+tableWrapper.addEventListener('scroll', () => {
+  if (tableWrapper.scrollTop > 0) {
+    thead.classList.add('sticky-active');
+  } else {
+    thead.classList.remove('sticky-active');
+  }
+});

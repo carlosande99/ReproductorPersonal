@@ -40,24 +40,26 @@
           </span>
         </div>
       </article>
-      <article class="article-secondary" id="playlist">
+      <article class="article-secondary table-wrapper" id="playlist">
         <!-- falta añadir boton de parar, buscar, ordenar[titulo, artista, album] -->
 
         <!-- Aquí se agregarán las canciones dinámicamente -->
-        <table>
+        <table class="table-container">
           <colgroup>
             <col style="width: 5%;">
             <col style="width: 45%;">
             <col style="width: 40%;">
             <col style="width: 10%;">
           </colgroup>
-          <tbody id="songList">
+          <thead>
             <tr>
               <th>#</th>
               <th>Título</th>
               <th>Álbum</th>
               <th>Duración</th>
             </tr>
+          </thead>
+          <tbody id="songList">
           </tbody>
         </table>
       </article>
