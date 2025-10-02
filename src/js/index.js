@@ -35,8 +35,12 @@ form.addEventListener('submit', async (e) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ url })
         });
-
         const serverData = await response.json();
+        if(serverData === null){
+            alert("La canción ya existe en la lista");
+            borrarBuscador();
+            return;
+        }
         numCanciones.textContent = +numCanciones.textContent + 1;
         añadirCancionTabla(serverData);
         borrarBuscador();
@@ -129,7 +133,7 @@ function añadirDatosAlAside(img, title, artist){
     const div5 = document.createElement('div');
     const div6 = document.createElement('div');
     const creditos = document.createElement('p');
-    creditos.textContent = "Créditos";
+    creditos.textContent = "Añadir letra:";
     [...aside.children].forEach((child, index) => {
         if (index > 0) child.remove(); // Borra todos excepto el primero
     });
@@ -363,7 +367,7 @@ function makeResizable(resizer, leftElement, isLeft = true, minPercent, maxPerce
 }
 
 makeResizable(document.getElementById("resize-nav"), document.querySelector("nav"), true, 5, 20);
-makeResizable(document.getElementById("resize-aside"), document.querySelector("aside"), false, 15, 20);
+makeResizable(document.getElementById("resize-aside"), document.querySelector("aside"), false, 15, 30);
 
 tableWrapper.addEventListener('scroll', () => {
   if (tableWrapper.scrollTop > 0) {

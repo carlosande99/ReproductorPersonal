@@ -40,12 +40,18 @@ export async function obtenerCancion(trackId) {
         duracion: 0
       }
     };
-    await descargarCancion(track.body.name, track.body.artists[0].name, track.body.id);
-    song.datos.duracion = duration_ms;
-    // Agregar la nueva canción
-    datos.push(song);
-    fs.writeFileSync(jsonPath, JSON.stringify(datos, null, 2), 'utf-8');
-    return song;
+    const  existe = datos.some(c => c.idCancion === song.idCancion);
+    if(!existe){
+      await descargarCancion(track.body.name, track.body.artists[0].name, track.body.id);
+      song.datos.duracion = duration_ms;
+      // Agregar la nueva canción
+      datos.push(song);
+      fs.writeFileSync(jsonPath, JSON.stringify(datos, null, 2), 'utf-8');
+      return song;
+    }else{
+      return null;
+    }
+
   } catch (err) {
     console.error('Error al obtener canción:', err);
   }
