@@ -1,0 +1,123 @@
+body{
+    height: 100dvh;
+}
+@media only screen{
+    body{
+        font-size: 1.5rem;
+    }
+    nav{
+        display: none;
+    }
+
+    main section .article-main{
+        height: 20%;
+    }
+
+    main section .article-secondary{
+        height: 80%;
+    }
+
+    aside{
+        display : none !important;
+    }
+
+    header .search-container{
+        width: 70%;
+    }
+
+    footer #datosReproductor{
+        width: 80%;
+    }
+
+    footer div:nth-child(3){
+        display: none;
+    }
+    #reproductor{
+        height: 100%;
+    }
+    .controls{
+        height: 100%;
+    }
+    .main-controls{
+        justify-content: end;
+        width: 80%;
+        height: 100%;
+    }
+
+    .main-controls #play{
+        width: 70px !important;
+        height: 70px !important;
+        background-color: var(--color-spotify);
+    }
+
+    #play img{
+        width: 60px!important;
+        height: 60px !important;
+    }
+
+    #suffle, #prev, #next, #repeat{
+        display: none;
+    }
+
+    .controls .time-controls{
+        display: none;
+    }
+
+}
+
+@media only screen and (min-width:992px){
+    body{
+        font-size: 1rem;
+    }
+    header .search-container{
+        width: 30%;
+    }
+    nav{
+        display: block;
+    }
+
+    main section .article-main{
+        height: 40%;
+    }
+
+    main section .article-secondary{
+        height: 60%;
+    }
+
+    aside{
+        display : block !important;
+    }
+
+    footer #datosReproductor{
+        width: 33.33%;
+    }
+
+    footer div:nth-child(3){
+        display: flex;
+    }
+
+    .main-controls{
+        justify-content: space-between;
+        width: 50%;
+        height: auto;
+    }
+
+    .main-controls #play{
+        width: 35px !important;
+        height: 35px !important;
+        background-color: white;
+    }
+
+    #play img{
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    #suffle, #prev, #next, #repeat{
+        display: block;
+    }
+
+    .controls .time-controls{
+        display: flex;
+    }
+}
