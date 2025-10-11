@@ -2,9 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import playdl from 'play-dl';
 import ytdl from '@distube/ytdl-core';
-import {exec} from "child_process"
+import {exec} from "child_process";
 // Crear carpeta 'descargas' si no existe
 const carpetaDescargas = './src/music';
+const navegador = process.env.NAVEGADOR || 'chrome';
 export let duration_ms = 0;
 if (!fs.existsSync(carpetaDescargas)) fs.mkdirSync(carpetaDescargas);
 
@@ -72,13 +73,15 @@ async function descargarAudio(url, nombreArchivo) {
       if (resultado === "fallback") {
         console.log("Usando yt-dlp como respaldo...");
         await new Promise((resolve, reject) => {
-          const comando = `yt-dlp -x --audio-format mp3 -o "${tempFile}.%(ext)s" "${url}"`;
+          const comando = `yt-dlp -x --audio-format mp3 -o "${tempFile}.%(ext)s" --cookies-from-browser "${navegador}" "${url}"`;
           exec(comando, (error, stdout, stderr) => {
             if (error) {
               console.error("Error al descargar con yt-dlp:", error.message);
+              console.error("stdout:", stderr);
               return reject(error);
             }
             console.log("Descarga completada con yt-dlp:", tempFile);
+            console.log(stdout);
             resolve();
           });
         });
