@@ -7,7 +7,645 @@
       "artist": "ROSÉ, Bruno Mars",
       "album": "APT.",
       "caractula": "https://i.scdn.co/image/ab67616d0000b27336032cb4acd9df050bc2e197",
-      "duracion": 169917
+      "duracion": 174000
+    }
+  },
+  {
+    "id": 2,
+    "idCancion": "4foCz4G0YlfwumjM4GnMee",
+    "datos": {
+      "title": "El Día Que Tú Te Marches",
+      "artist": "Estopa",
+      "album": "Estopía",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273091eb8acd823b269e9f7a2d3",
+      "duracion": 220000
+    }
+  },
+  {
+    "id": 3,
+    "idCancion": "6NdKkfo7o6IH1Op0jsBDjN",
+    "datos": {
+      "title": "Si No Le Contesto",
+      "artist": "Plan B",
+      "album": "House of Pleasure",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b2732bf273f977582e8f890192fe",
+      "duracion": 222000
+    }
+  },
+  {
+    "id": 4,
+    "idCancion": "2x6X7MBtVqiv1GnLNnSm8e",
+    "datos": {
+      "title": "Me Estas Tentando - Remix",
+      "artist": "Wisin & Yandel, Franco \"El Gorilla\", Jayko",
+      "album": "La Revolucion (Deluxe)",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273683bdcd8a051a0d5a1a166eb",
+      "duracion": 268000
+    }
+  },
+  {
+    "id": 5,
+    "idCancion": "25NKR4lr2XEkXugQQ35ldd",
+    "datos": {
+      "title": "Cuando Cae la Luna",
+      "artist": "Estopa",
+      "album": "¿La Calle Es Tuya?",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b27363c4b23bc717b4d5f5a36349",
+      "duracion": 200000
+    }
+  },
+  {
+    "id": 6,
+    "idCancion": "2iIBpwP4FyQ95xgVail3yr",
+    "datos": {
+      "title": "No_se_ve.mp3",
+      "artist": "Emilia, LUDMILLA, ZECCA",
+      "album": "No_se_ve.mp3",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b27332630fe83750d8db0b2b2d5c",
+      "duracion": 207000
+    }
+  },
+  {
+    "id": 7,
+    "idCancion": "15actjx4Wa7QVrq75SURHV",
+    "datos": {
+      "title": "Choca",
+      "artist": "Plan B",
+      "album": "Love And Sex",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b2739948d51cd8429de7b415d1b3",
+      "duracion": 221000
+    }
+  },
+  {
+    "id": 8,
+    "idCancion": "2t9Ms65Rnx1Modqofqw3WT",
+    "datos": {
+      "title": "Ke Pasa!?",
+      "artist": "Estopa",
+      "album": "Destrangis",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b27353b851ba6d8ce3ab11d9824c",
+      "duracion": 200000
+    }
+  },
+  {
+    "id": 9,
+    "idCancion": "4OSBTYWVwsQhGLF9NHvIbR",
+    "datos": {
+      "title": "Rolling in the Deep",
+      "artist": "Adele",
+      "album": "21",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273164feb363334f93b6458d2a9",
+      "duracion": 234000
+    }
+  },
+  {
+    "id": 10,
+    "idCancion": "0WpRF4X2LyMTZnqqrXX19U",
+    "datos": {
+      "title": "Get Jinxed",
+      "artist": "League of Legends, Djerv",
+      "album": "The Music of League of Legends Vol. 1",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273e79c051bb5ccb3934b4ca42b",
+      "duracion": 172000
+    }
+  },
+  {
+    "id": 11,
+    "idCancion": "5nJaS3PEpyPfaWiLxIGtRX",
+    "datos": {
+      "title": "Virtual Diva",
+      "artist": "Don Omar",
+      "album": "iDon",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b2739a5ca92aab056506d2b44316",
+      "duracion": 313000
+    }
+  },
+  {
+    "id": 12,
+    "idCancion": "6oyl7ELfrMqXLhGmIjXY9R",
+    "datos": {
+      "title": "Lovumba",
+      "artist": "Daddy Yankee",
+      "album": "Prestige",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b27329866617908a958f41917d76",
+      "duracion": 250000
+    }
+  },
+  {
+    "id": 13,
+    "idCancion": "6isTQfKXhNO3EyJd9mSxx8",
+    "datos": {
+      "title": "AM I DREAMING (feat. Miley Cyrus)",
+      "artist": "Lil Nas X, Miley Cyrus",
+      "album": "MONTERO",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273be82673b5f79d9658ec0a9fd",
+      "duracion": 182000
+    }
+  },
+  {
+    "id": 14,
+    "idCancion": "1FpVJ7HpZInE2GvhVE2TwT",
+    "datos": {
+      "title": "Legends Never Die",
+      "artist": "League of Legends, Against The Current",
+      "album": "Legends Never Die",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b27365233dedc44bbc41ca434c49",
+      "duracion": 179000
+    }
+  },
+  {
+    "id": 15,
+    "idCancion": "4wPrE3gGDXUsymRJ1MaDoV",
+    "datos": {
+      "title": "Me enamoré - Feeling of Love",
+      "artist": "Xriz",
+      "album": "Adicción",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b27318e6d9412d9f067f94935c79",
+      "duracion": 219000
+    }
+  },
+  {
+    "id": 16,
+    "idCancion": "5xPgLR8hKsPWlOBnurBi20",
+    "datos": {
+      "title": "Yo Soy De Aqui",
+      "artist": "Don Omar, Yandel, Daddy Yankee, Arcángel",
+      "album": "The Last Don II",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b2734c22257156b1234fc0169b1f",
+      "duracion": 264000
+    }
+  },
+  {
+    "id": 17,
+    "idCancion": "5X7zViJE5FvOZ8vhcVk1NV",
+    "datos": {
+      "title": "El Nano",
+      "artist": "Melendi",
+      "album": "El Nano",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273a51e56a5d447aeb4261cf291",
+      "duracion": 169000
+    }
+  },
+  {
+    "id": 18,
+    "idCancion": "6pWeJvzpQR1ihiUSJklOzD",
+    "datos": {
+      "title": "Paseo",
+      "artist": "Estopa",
+      "album": "Voces de Ultrarumba",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273649d695f4cabd681b46eb745",
+      "duracion": 219000
+    }
+  },
+  {
+    "id": 19,
+    "idCancion": "5OaqffbeQyVVqtnA71Ci7K",
+    "datos": {
+      "title": "Por la Raja de Tu Falda",
+      "artist": "Estopa",
+      "album": "Estopa",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b2731a311570340a4f6530da158b",
+      "duracion": 203000
+    }
+  },
+  {
+    "id": 20,
+    "idCancion": "3W8oGQi947ofWesrIYXP2n",
+    "datos": {
+      "title": "Hasta Que Salga El Sol",
+      "artist": "Don Omar",
+      "album": "Don Omar Presents MTO2: New Generation",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273a5e45cc0dc2afb858f861736",
+      "duracion": 253000
+    }
+  },
+  {
+    "id": 21,
+    "idCancion": "69Ej1xrGjOcHvIMtMKxK0G",
+    "datos": {
+      "title": "Dile",
+      "artist": "Don Omar",
+      "album": "The Last Don",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273b4070df60fced11f282548d0",
+      "duracion": 236000
+    }
+  },
+  {
+    "id": 22,
+    "idCancion": "7nKBxz47S9SD79N086fuhn",
+    "datos": {
+      "title": "SUBEME LA RADIO",
+      "artist": "Enrique Iglesias, Descemer Bueno, Zion & Lennox",
+      "album": "SUBEME LA RADIO (feat. Descemer Bueno & Zion & Lennox)",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273f634ce4f69fc4a7113d35217",
+      "duracion": 233000
+    }
+  },
+  {
+    "id": 23,
+    "idCancion": "784NEMxBpeH9MxWF1qr4iu",
+    "datos": {
+      "title": "Déjate Llevar",
+      "artist": "Juan Magán, Belinda, Manuel Turizo, Snova, B-Case",
+      "album": "4.0",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b27347f847269d7db00ce47de372",
+      "duracion": 247000
+    }
+  },
+  {
+    "id": 24,
+    "idCancion": "3dIuilnw3QX0KkQNpERaDD",
+    "datos": {
+      "title": "LIGHT AGAIN!",
+      "artist": "Lil Nas X",
+      "album": "Days Before Dreamboy",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b2735be6d83bbf90e17701d9d61a",
+      "duracion": 193000
+    }
+  },
+  {
+    "id": 25,
+    "idCancion": "1Px4jqDnQFulhG7Dl3nK0C",
+    "datos": {
+      "title": "Te Voy a Esperar (feat. Belinda)",
+      "artist": "Juan Magán, Belinda",
+      "album": "Te Voy a Esperar (feat. Belinda)",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b2735db493b4c64c1f13fd960f05",
+      "duracion": 219000
+    }
+  },
+  {
+    "id": 26,
+    "idCancion": "5nJh6qEdgsKUWJT95UwFOe",
+    "datos": {
+      "title": "Al Andalus",
+      "artist": "David Bisbal",
+      "album": "Sin Mirar Atrás",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273419d26f26f86679c9a790f2a",
+      "duracion": 239000
+    }
+  },
+  {
+    "id": 27,
+    "idCancion": "4vsJWPwWPS27gRM4oLjBNO",
+    "datos": {
+      "title": "DONT WANT IT",
+      "artist": "Lil Nas X",
+      "album": "MONTERO",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273be82673b5f79d9658ec0a9fd",
+      "duracion": 132000
+    }
+  },
+  {
+    "id": 28,
+    "idCancion": "6btdl1Vl6Ta5lUwUSOFW2H",
+    "datos": {
+      "title": "SUN GOES DOWN",
+      "artist": "Lil Nas X",
+      "album": "MONTERO",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273be82673b5f79d9658ec0a9fd",
+      "duracion": 173000
+    }
+  },
+  {
+    "id": 29,
+    "idCancion": "3gPOFPYLgpvQz0ZMwmv7NE",
+    "datos": {
+      "title": "Te echo de menos",
+      "artist": "Beret",
+      "album": "Te echo de menos",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b2732db7c3232211f6bf5ba54e08",
+      "duracion": 195000
+    }
+  },
+  {
+    "id": 30,
+    "idCancion": "5RzFJd6W40SDTyZkX6xx45",
+    "datos": {
+      "title": "I Know You Want Me (Calle Ocho)",
+      "artist": "Pitbull",
+      "album": "Pitbull Starring In Rebelution",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273956346ed9c201b6de9d3a1a2",
+      "duracion": 241000
+    }
+  },
+  {
+    "id": 31,
+    "idCancion": "5IFHZ9tls0RJTje5Cao2he",
+    "datos": {
+      "title": "Rana",
+      "artist": "Karetta el Gucci",
+      "album": "Rana",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273f59edd260277186446380190",
+      "duracion": 194000
+    }
+  },
+  {
+    "id": 32,
+    "idCancion": "4waqcUQWdj0yH26STWl2Rq",
+    "datos": {
+      "title": "Rosas",
+      "artist": "La Oreja de Van Gogh",
+      "album": "Lo Que Te Conte Mientras Te Hacias La Dormida",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273820f6e4afa04594a671e484f",
+      "duracion": 232000
+    }
+  },
+  {
+    "id": 33,
+    "idCancion": "5pl6anmN4tr564vO53AxBv",
+    "datos": {
+      "title": "Mi Reina",
+      "artist": "Henry Mendez",
+      "album": "Dale Mambo",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273798379397a70e5588e5e934b",
+      "duracion": 201000
+    }
+  },
+  {
+    "id": 34,
+    "idCancion": "2pbLzrByOZPibnYwSXLplI",
+    "datos": {
+      "title": "Noche de Estrellas",
+      "artist": "José de Rico, Henry Mendez, Jay Santos",
+      "album": "Noche de Estrellas",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273f89f7c7bae347db58d1b8bfd",
+      "duracion": 211000
+    }
+  },
+  {
+    "id": 35,
+    "idCancion": "2yLIf0wQ7lqhuwpdZBfmGZ",
+    "datos": {
+      "title": "Toca Toca - Radio Edit",
+      "artist": "Fly Project",
+      "album": "Toca Toca (Remixes)",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b27334ad9a8e17af212fb0fcbab6",
+      "duracion": 166000
+    }
+  },
+  {
+    "id": 36,
+    "idCancion": "2eF9THQfPwVQAeHAIaLqsV",
+    "datos": {
+      "title": "En Un Sólo Dia",
+      "artist": "Morat",
+      "album": "Sobre El Amor Y Sus Efectos Secundarios... Y Unas Cuantas Cosas Más (Edición Especial)",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b2739eb71b7fe146a474ff2b607e",
+      "duracion": 194000
+    }
+  },
+  {
+    "id": 37,
+    "idCancion": "2UREu1Y8CO4jXkbvqAtP7g",
+    "datos": {
+      "title": "Monster",
+      "artist": "Skillet",
+      "album": "Awake",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b27389f8d16ffe15fccfa0a7e31d",
+      "duracion": 187000
+    }
+  },
+  {
+    "id": 38,
+    "idCancion": "0nkzd3yNniB767zSDDdLZ3",
+    "datos": {
+      "title": "Awake and Alive",
+      "artist": "Skillet",
+      "album": "Awake",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b27389f8d16ffe15fccfa0a7e31d",
+      "duracion": 222000
+    }
+  },
+  {
+    "id": 39,
+    "idCancion": "3NqbKUOgaU2LgIFRbu4B12",
+    "datos": {
+      "title": "Éxtasis",
+      "artist": "Millonario & W. Corona, Cartel De Santa",
+      "album": "Así Soy Yo",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b2736607a51331ee3300109da153",
+      "duracion": 339000
+    }
+  },
+  {
+    "id": 40,
+    "idCancion": "09dtC4D6egNFViTp9mavvr",
+    "datos": {
+      "title": "Tú Me Quemas (feat. Gente de Zona & Los Cadillacs)",
+      "artist": "Chino & Nacho, Gente De Zona, Los Cadillac's",
+      "album": "Visualízate",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b2730e674e81c59a2308c1b4b660",
+      "duracion": 284000
+    }
+  },
+  {
+    "id": 41,
+    "idCancion": "7Fl3wSxRqBljyQH8dJSz9c",
+    "datos": {
+      "title": "Traidora (feat. Marc Anthony)",
+      "artist": "Gente De Zona, Marc Anthony",
+      "album": "Visualízate",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b2730e674e81c59a2308c1b4b660",
+      "duracion": 255000
+    }
+  },
+  {
+    "id": 42,
+    "idCancion": "4l3xGFwoTinvYxsePytOOf",
+    "datos": {
+      "title": "Báilame - Remix",
+      "artist": "Nacho, Yandel, Bad Bunny, Mambo Kingz, DJ Luian",
+      "album": "La Criatura",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273494d9c274facf28c43bcae39",
+      "duracion": 226000
+    }
+  },
+  {
+    "id": 43,
+    "idCancion": "2l8jcQzLaNZI9QhyHrda9e",
+    "datos": {
+      "title": "Una Mala - Remix",
+      "artist": "El Completo Rd, Chimbala, Cotorra Music Grup",
+      "album": "Una Mala (Remix)",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b2739ec82a46e734b8591455e821",
+      "duracion": 196000
+    }
+  },
+  {
+    "id": 44,
+    "idCancion": "7piXNyrajEfqhOkzgDq2Ts",
+    "datos": {
+      "title": "Me llama",
+      "artist": "Beret",
+      "album": "Me llama",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b2739f7cd85afc6d417d5e2dc905",
+      "duracion": 213000
+    }
+  },
+  {
+    "id": 45,
+    "idCancion": "2UcHKgT00bLP7Cjkni3Itg",
+    "datos": {
+      "title": "HOTBOX",
+      "artist": "Lil Nas X",
+      "album": "Days Before Dreamboy",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b2735be6d83bbf90e17701d9d61a",
+      "duracion": 231000
+    }
+  },
+  {
+    "id": 46,
+    "idCancion": "4VRP8DfxO2qQOZrnbaj324",
+    "datos": {
+      "title": "Enamorate",
+      "artist": "Dvicio",
+      "album": "Justo Ahora",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273bb6043462ffdcf193ec4304b",
+      "duracion": 192000
+    }
+  },
+  {
+    "id": 47,
+    "idCancion": "1XmtZ8FmPQVNdlNCxT5pJJ",
+    "datos": {
+      "title": "Te Vas",
+      "artist": "Daviles de Novelda",
+      "album": "Te Vas",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273f58a275b284b7ec3746ea825",
+      "duracion": 219000
+    }
+  },
+  {
+    "id": 48,
+    "idCancion": "05ZXXyeZFhZtA6DAP3Aw7x",
+    "datos": {
+      "title": "Loca (feat. Cali y El Dandee)",
+      "artist": "Maite Perroni, Cali Y El Dandee",
+      "album": "Loca (feat. Cali y El Dandee)",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273aff6f2b3368a8bf5bb6eb94d",
+      "duracion": 245000
+    }
+  },
+  {
+    "id": 49,
+    "idCancion": "0BenZn1xELuxhb7Pjwyjxv",
+    "datos": {
+      "title": "Hooka",
+      "artist": "Don Omar, Plan B",
+      "album": "Meet The Orphans",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b2734640a26eb27649006be29a94",
+      "duracion": 238000
+    }
+  },
+  {
+    "id": 50,
+    "idCancion": "129lYDVKnWtlJc2PZJviuA",
+    "datos": {
+      "title": "A Dios Le Pido",
+      "artist": "Juanes",
+      "album": "Un Día Normal",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b27323a1613112c1ecf946f51177",
+      "duracion": 211000
+    }
+  },
+  {
+    "id": 51,
+    "idCancion": "5gB2IrxOCX2j9bMnHKP38i",
+    "datos": {
+      "title": "Life is a Highway",
+      "artist": "Rascal Flatts",
+      "album": "Cars (Original Motion Picture Soundtrack)",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273a73bb6afa8cb999aafb3c150",
+      "duracion": 299000
+    }
+  },
+  {
+    "id": 52,
+    "idCancion": "40Ux81AmflOZfBYHjnwpPp",
+    "datos": {
+      "title": "Romper La Disco (feat. Farruko, Zion, Lenox & Dy)",
+      "artist": "Musicologo Y Menes, Farruko, Zion, Lenox, DY",
+      "album": "Los De La Nazza the Collection, Vol. 1",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273867020e42ac77c67bca474c1",
+      "duracion": 286000
+    }
+  },
+  {
+    "id": 53,
+    "idCancion": "62KauVMflnovkPliVwvIPp",
+    "datos": {
+      "title": "Pantera",
+      "artist": "Omar Montes, Daviles de Novelda, DaniMflow, Salcedo Leyry",
+      "album": "Pantera",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273fd76a439e736d2a968069d44",
+      "duracion": 207000
+    }
+  },
+  {
+    "id": 54,
+    "idCancion": "5F9z2PmdTyOvik50IHMKvC",
+    "datos": {
+      "title": "Porqué - Original",
+      "artist": "DaniMflow, Daviles de Novelda, JONATHAN SALINAS",
+      "album": "Porqué",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b27389df0d6bc42a2b148a7d1ccc",
+      "duracion": 256000
+    }
+  },
+  {
+    "id": 55,
+    "idCancion": "3XFaHgb1qsyUcQZrqBup0I",
+    "datos": {
+      "title": "No me crees (feat. Javier Ojeda)",
+      "artist": "Efecto Mariposa, Javier Ojeda",
+      "album": "Complejidad",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b27388b5207cc90e6a9fb295d4f5",
+      "duracion": 294000
+    }
+  },
+  {
+    "id": 56,
+    "idCancion": "1AlytqFfAzIHuPqSTQmDyo",
+    "datos": {
+      "title": "Yo Quiero (Si Tu Te Enamoras) (feat. Pitbull)",
+      "artist": "Gente De Zona, Pitbull",
+      "album": "Visualízate",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b2730e674e81c59a2308c1b4b660",
+      "duracion": 206000
+    }
+  },
+  {
+    "id": 57,
+    "idCancion": "3gVhsZtseYtY1fMuyYq06F",
+    "datos": {
+      "title": "Sonne",
+      "artist": "Rammstein",
+      "album": "Mutter",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b2738b2c42026277efc3e058855b",
+      "duracion": 253000
+    }
+  },
+  {
+    "id": 58,
+    "idCancion": "41nUOHxf1hwr5myEEbXco7",
+    "datos": {
+      "title": "Caliente - Radio Edit",
+      "artist": "INNA",
+      "album": "Party Never Ends, Pt. 1 (Deluxe Edition)",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b27321e639a53f2707d4b32f7faf",
+      "duracion": 174000
+    }
+  },
+  {
+    "id": 59,
+    "idCancion": "2vYJfucXrRvHQ7QCsdc9KF",
+    "datos": {
+      "title": "Tengo",
+      "artist": "Macaco",
+      "album": "Puerto Presente",
+      "caractula": "https://i.scdn.co/image/ab67616d0000b273e233501a3ab56cedd3ead1af",
+      "duracion": 248000
     }
   }
 ]

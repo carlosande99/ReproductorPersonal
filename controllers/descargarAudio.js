@@ -3,9 +3,9 @@ import path from 'path';
 import playdl from 'play-dl';
 import ytdl from '@distube/ytdl-core';
 import {exec} from "child_process";
-// Crear carpeta 'descargas' si no existe
-const carpetaDescargas = './src/music';
-const navegador = process.env.NAVEGADOR || 'chrome';
+
+const carpetaDescargas = process.env.RUTAMUSICA;
+
 export let duration_ms = 0;
 if (!fs.existsSync(carpetaDescargas)) fs.mkdirSync(carpetaDescargas);
 
@@ -29,77 +29,37 @@ async function buscarCancionEnYoutube(titulo, artista) {
 }
 
 async function descargarAudio(url, nombreArchivo) {
-  const TIMEOUT = 10000; // 10 segundos
-  const rutaArchivo = nombreArchivo + ".mp3";
-  const tempFile = nombreArchivo;
-  try {
-    console.log("Intentando descargar con ytdl-core...");
+    const rutaSalida = `${nombreArchivo}.%(ext)s`;
 
-    await new Promise((resolve) => {
-      const archivo = fs.createWriteStream(rutaArchivo);
-      const stream = ytdl(url, { filter: "audioonly" });
-      let terminado = false;
-
-      const timer = setTimeout(() => {
-        if (!terminado) {
-          console.warn("ytdl-core tardó demasiado, cancelando...");
-          stream.destroy();
-          archivo.close(() => {
-            fs.unlink(rutaArchivo, (err) => {
-              if (err) console.error("Error al borrar archivo incompleto:", err);
-              resolve("fallback");
-            });
-          });
-          terminado = true;
-          resolve("fallback");
-        }
-      }, TIMEOUT);
-
-      stream.pipe(archivo)
-        .on("finish", () => {
-          terminado = true;
-          clearTimeout(timer);
-          console.log("Descarga completada con ytdl-core");
-          resolve("success");
-        })
-        .on("error", (err) => {
-          terminado = true;
-          clearTimeout(timer);
-          archivo.close();
-          console.warn("ytdl-core falló, pasando a yt-dlp...");
-          resolve("fallback");
-        });
-    }).then(async (resultado) => {
-      if (resultado === "fallback") {
-        console.log("Usando yt-dlp como respaldo...");
-        await new Promise((resolve, reject) => {
-          const comando = `yt-dlp -x --audio-format mp3 -o "${tempFile}.%(ext)s" --cookies-from-browser "${navegador}" "${url}"`;
-          exec(comando, (error, stdout, stderr) => {
-            if (error) {
-              console.error("Error al descargar con yt-dlp:", error.message);
-              console.error("stdout:", stderr);
-              return reject(error);
-            }
-            console.log("Descarga completada con yt-dlp:", tempFile);
-            console.log(stdout);
-            resolve();
-          });
-        });
-      }
-    });
-  } catch (err) {
-    console.error("Error inesperado al descargar el audio:", err);
     try {
-      if (fs.existsSync(tempFile)) {
-        fs.unlinkSync(tempFile);
-        console.log("Archivo incompleto eliminado:", tempFile);
-      }
-    } catch (e) {
-      console.warn("No se pudo eliminar archivo temporal:", e.message);
+
+        console.log("Descargando audio con yt-dlp...");
+
+        await new Promise((resolve, reject) => {
+
+        const comando = `yt-dlp -x --audio-format mp3 -o "${rutaSalida}" "${url}"`;
+
+        exec(comando, (error, stdout, stderr) => {
+
+            if (error) {
+            console.log("Error yt-dlp:", error.message);
+            reject("fallback");
+            return;
+            }
+
+            console.log(stdout);
+            resolve("success");
+
+        });
+
+        });
+
+        console.log("Descarga completada");
+    } catch (err) {
+        console.log("Error general:", err.message);
+    }finally{
+        limpiarArchivosTemporales();
     }
-  }finally{
-    limpiarArchivosTemporales();
-  }
 }
 export async function descargarCancion(titulo, artista, id) {
   try {
@@ -120,7 +80,7 @@ export async function descargarCancion(titulo, artista, id) {
 
 async function obtenerDuracion(url){
   try{
-    const info = await ytdl.getInfo(url);
+    const info = await ytdl.getBasicInfo(url);
     const duracionSeg = parseInt(info.videoDetails.lengthSeconds); // duración en segundos
     const duracionMs = duracionSeg * 1000; // duración en milisegundos
     console.log(`Duración: ${duracionSeg} s / ${duracionMs} ms`);

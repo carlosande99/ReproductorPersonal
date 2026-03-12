@@ -22,7 +22,7 @@ const suffle = document.getElementById("suffle");
 const urlInput = document.getElementById('url');
 const btn_close = document.getElementById("btn-close");
 const aside = document.getElementById("aside");
-const tableWrapper = document.querySelector('.table-wrapper');
+const tableWrapper = document.querySelector('.table-container');
 const thead = document.querySelector('thead');
 let repetir = false;
 let aleatorio = false;
@@ -107,6 +107,7 @@ function añadirCancionTabla(item){
     };
 
     tr.id = item.id;
+    tr.classList.add("trCancion")
 
     tr.appendChild(td1);
     tr.appendChild(td2);

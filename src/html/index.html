@@ -5,6 +5,8 @@
   <title>Reproductor Spotify Propio</title>
   <link rel="stylesheet" href="../css/index.css">
   <link rel="stylesheet" href="../css/movil.css">
+  <link rel="icon" href="../svg/Spotify_App_Logo.svg.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <header>
@@ -25,7 +27,7 @@
     
   </header>
   <main class="player">
-    <nav>
+    <nav id="nav">
       <h2>Nav</h2>
     </nav>
     <div class="resizer" id="resize-nav"></div>
@@ -46,12 +48,6 @@
 
         <!-- Aquí se agregarán las canciones dinámicamente -->
         <table class="table-container">
-          <colgroup>
-            <col style="width: 5%;">
-            <col style="width: 45%;">
-            <col style="width: 40%;">
-            <col style="width: 10%;">
-          </colgroup>
           <thead>
             <tr>
               <th>#</th>
@@ -67,7 +63,7 @@
     </section>
     <div class="resizer-right" id="resize-aside"></div>
     <aside id="aside">
-      <!-- datos de la cancion -->
+      
        <div>
           <p>Canciones que te gustan</p>
        </div>
@@ -114,7 +110,7 @@
       <!-- cola/letra/volumen/minireproductor -->
        <div class="volumen">
           <img src="../svg/volume-mid-svgrepo-com.svg" alt="volumen" class="volume" id="volume">
-          <input type="range" id="volumenRango" min="0" max="1" step="0.01" value="0.5">
+          <input type="range" id="volumenRango" min="0" max="1" step="0.01" value="1">
        </div>
     </div>
   </footer>
