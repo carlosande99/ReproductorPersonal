@@ -1,8 +1,29 @@
 
 @media (max-width: 600px){
 
+    .search-container .btn-close .icon-close{
+        width: 25px;
+        height: 25px;
+    }
+
+    header .search-container form .input-add-song::placeholder{
+        font-size: 0.9rem;
+    }
+
     body{
         font-size: 0.7rem;
+    }
+
+    main section .article-main{
+        height: 20%;
+    }
+
+    main section .article-secondary{
+        height: 80%;
+    }
+
+    main section .info-song p{
+        font-size: 1.5rem;
     }
 
     header .search-container{
@@ -10,7 +31,11 @@
     }
 
     footer #datosReproductor{
-        width: 80%;
+        width: 50%;
+    }
+
+    footer #reproductor{
+        width: 50%;
     }
 
     footer div:nth-child(3){
@@ -18,10 +43,11 @@
     }
 
     .main-controls{
-        justify-content: end;
+        justify-content: center;
         width: 80%;
         height: 100%;
         margin-bottom: 10%;
+        align-content: center;
     }
 
     .main-controls #play{
@@ -36,7 +62,7 @@
     }
 
     #suffle, #prev, #next, #repeat{
-        display: none;
+        /* display: none; */
     }
 
     .controls .time-controls{
@@ -49,5 +75,13 @@
 
     table tbody td img{
         width: 25%;
+    }
+
+    footer #datosReproductor img{
+        width: 30%;
+    }
+
+    footer #datosReproductor div{
+        width: 70%;
     }
 }
